@@ -34,6 +34,13 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  # rspec-rails is a testing framework for Rails 3+
+  gem 'rspec-rails', '~> 3.9'
+  # Strategies for cleaning databases. Can be used to ensure a clean slate for testing
+  gem 'database_cleaner', '~> 1.8', '>= 1.8.1'
+  # factory_girl_rails provides integration between factory_girl and rails 3 or newer 
+  # (currently just automatic factory definition loading)
+  gem 'factory_girl_rails', '~> 4.9'
 end
 
 group :development do
