@@ -25,6 +25,12 @@ gem 'jbuilder', '~> 2.7'
 # Set-up Rubocop in your local env - it will help you to find style errors
 gem 'rubocop'
 
+# Flexible authentication solution for Rails with Warden
+gem 'devise', '~> 4.7', '>= 4.7.1'
+
+# A generalized Rack framework for multiple-provider authentication.
+gem 'omniauth', '~> 1.9'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
