@@ -1,19 +1,13 @@
 Rails.application.routes.draw do
   
-  get 'posts/index'
-  get 'posts/new'
-  get 'posts/show'
-  get 'posts/create'
+  root 'posts/index'
+
   get 'users/index'
   get 'users/new'
   get 'users/show'
   get 'users/create'
   devise_for :users
  
-
-
-
-resources :users
-resources :posts
+  resources :posts 
 
 end

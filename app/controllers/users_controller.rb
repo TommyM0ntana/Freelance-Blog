@@ -1,13 +1,15 @@
 class UsersController < ApplicationController
   def index
-  end
-
-  def new
+    @users = New.all
   end
 
   def show
+    @user = User.find(params)
   end
 
-  def create
+  Private
+
+  def users_params
+    params.require(:user).permit(:email)
   end
 end
