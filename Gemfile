@@ -29,7 +29,7 @@ gem 'rubocop'
 gem 'devise', '~> 4.7', '>= 4.7.1'
 
 # A generalized Rack framework for multiple-provider authentication.
-gem 'omniauth', '~> 1.9'
+gem 'omniauth'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
