@@ -44,9 +44,8 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.9'
   # Strategies for cleaning databases. Can be used to ensure a clean slate for testing
   gem 'database_cleaner', '~> 1.8', '>= 1.8.1'
-  # factory_girl_rails provides integration between factory_girl and rails 3 or newer
-  # (currently just automatic factory definition loading)
-  gem 'factory_girl_rails', '~> 4.9'
+  # factory_bot_rails provides integration between factory_bot and rails 4.2 or newer
+  gem 'factory_bot_rails', '~> 5.1', '>= 5.1.1'
 end
 
 group :development do
