@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   before_save { self.email = email.downcase }
-  devise :database_authenticatable, :registerable, 
-              :recoverable, :rememberable, :validatable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
 
   # Validation for user tests
   validates :first_name, presence: true, length: { maximum: 50 }
