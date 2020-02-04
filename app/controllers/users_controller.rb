@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, :require_login
+  before_action :authenticate_user!, :required_login
 
   def index
     # user feed
-    @users = User.all.where('id != ?', current_user.id)
+    @users = User.all
   end
 
   def show

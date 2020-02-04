@@ -1,7 +1,4 @@
 <% if user_signed_in? %>
-  <p><%= link_to "logout", destroy_user_session_path, class: "btn btn-danger", :method => 'delete' %></p>
-
-
   <p>
     Dear 
     "<%= current_user.email %>", 
@@ -12,15 +9,18 @@
   <b><h2>CREATED ARTICLES:</h2></b>
     <% @posts.each do |post| %>
       <li>
+        <p>by: <%= post.user.email %><p>
         <u><i><h6><%= post.title.upcase %></h6></i></u>
-        <br>
         <%= post.content %>
         <br><br>
+        <hr>
       </li>
     <% end %>
   </ol>
   <p> You can create your own posts down here"</p>
   <%= link_to 'Create Post', new_post_path, class: "btn btn-primary" %>
+  <%= link_to 'Other users', users_path, class: 'btn btn-info' %>
+  <p><%= link_to "Your Profile", current_user, class: "btn btn-light" %></p>
 
 
 <% else %>

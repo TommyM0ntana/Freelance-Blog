@@ -1,4 +1,4 @@
-<%= form_for @post do |f| %>
+<%= form_for [@user, @post] do |f| %>
   <p>
     <%= f.label :title, "What's On your Mind?" %>
     <%= f.text_field :title, class: 'form-control'%>
@@ -11,6 +11,6 @@
 
   <p>
     <%= f.submit "Share", class: 'btn btn-success'%>
-    
+
   </p>
 <% end %>
