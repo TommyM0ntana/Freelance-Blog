@@ -1,2 +1,8 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="row">
+  <aside class="col-md-4">
+    <section>
+      <h1><%= @user.email %>'s profile</h1>
+    </section>
+  </aside>
+  <p>create <%= link_to "A new post here", new_post_path %></p>
+</div>

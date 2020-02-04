@@ -1,2 +1,9 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<div class="row">
+  <aside class="col-md-4">
+    <section>
+      <h1>All the registered</h1>
+      <h2><%= @users %></h2>
+    </section>
+  </aside>
+  <p>Go <%= link_to "back home", posts_path %></p>
+</div>

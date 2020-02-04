@@ -1,2 +1,11 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<div class="row">
+  <aside class="col-md-4">
+    <section>
+    <ol>
+      <li><%= @post.title %></li>
+      <li><%= @post.content %></li>
+    </ol>
+    </section>
+  </aside>
+  <p>create <%= link_to "A new post here", new_post_path %></p>
+</div>
