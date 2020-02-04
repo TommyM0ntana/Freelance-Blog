@@ -1,23 +1,31 @@
 <% if user_signed_in? %>
+  <p><%= link_to "logout", destroy_user_session_path, class: "btn btn-danger", :method => 'delete' %></p>
+
+
+  <p>
+    Dear 
+    "<%= current_user.email %>", 
+    below is a list of all posts created already created by other users.
+  </p>
+  <br>
+  <ol>
+  <b><h2>CREATED ARTICLES:</h2></b>
+    <% @posts.each do |post| %>
+      <li>
+        <u><i><h6><%= post.title.upcase %></h6></i></u>
+        <br>
+        <%= post.content %>
+        <br><br>
+      </li>
+    <% end %>
+  </ol>
+  <p> You can create your own posts down here"</p>
+  <%= link_to 'Create Post', new_post_path, class: "btn btn-primary" %>
+
+
+<% else %>
   <h1 class="mt-5">Welcome to the facebook clone</h1>
   <p class="lead">Please register or sign in to continue.</p>
   <%= link_to 'Sign up',  new_user_registration_path, class: "btn btn-success" %>
   <%= link_to 'Sign in',  new_user_session_path, class: "btn btn-secondary" %>
-<% else %>
-  <h1><%= @post.title %></h1>
-  <p>Content: <%= @post.content %></p>
-  <p>Author: <%= @post.user.email %>
-
-
-  <p><%= link_to "logout", destroy_user_session_path %></p>
-
-  <p>
-    Dear 
-    "<%= current_user.name.capitalize %>", 
-    here is a list of 
-    <%= link_to "all posts", posts_path %> 
-    already created by other users.
-  </p> 
-
-  <p> Or create your own <%= link_to "posts here", new_post_path %></p>
 <% end %>

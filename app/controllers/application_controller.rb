@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  before_action :authenticate_user!
   helper_method :created_events
 
   def created_posts
@@ -12,5 +13,9 @@ class ApplicationController < ActionController::Base
     else
       content_tag(:p, 'No posts created')
     end
+  end
+
+  def required_login
+    redirect_to new_user_session_path unless user_signed_in?
   end
 end
