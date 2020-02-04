@@ -1,0 +1,15 @@
+<%= form_for @post do |f| %>
+  <p>
+    <%= f.label :title, "What's On your Mind?" %>
+    <%= f.text_field :title, class: 'form-control'%>
+  </p>
+
+  <p>
+    <%= f.label :content, "Jot it down below?" %>
+    <%= f.text_area :content, class: 'form-control' %>
+  </p>
+
+  <p>
+    <%= f.submit "Share", class: 'btn btn-success'%>
+  </p>
+<% end %>
