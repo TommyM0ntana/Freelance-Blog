@@ -1,9 +1,11 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
+
   def index
-    @users = New.all
+    # user feed
   end
 
   def show
-    @user = User.find(:user_id)
+    # user profile
   end
 end
