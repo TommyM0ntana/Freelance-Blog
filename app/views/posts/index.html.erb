@@ -5,17 +5,47 @@
     below is a list of all posts created already created by other users.
   </p>
   <br>
-  <ol>
   <b><h2>CREATED ARTICLES:</h2></b>
-    <% @posts.each do |post| %>
-      <li>
-        <p>by: <%= link_to post.user.email, user_path(post.user) %></p>
-        <u><i><h6><%= post.title.upcase %></h6></i></u>
-        <%= post.content %>
-        <br><br>
-        <hr>
-      </li>
-    <% end %>
+  <div>
+  <ol>
+    <div>
+      <% @posts.each do |post| %>
+        <div>
+          <li>
+            <p>
+              by: <%= link_to post.user.email, 
+              user_path(post.user) %>
+              On: <span class='post-date'> 
+              <%= post.created_at.strftime("%Y/%m/%d") %>
+              </p>
+            <u><i><h6><%= post.title.upcase %></h6></i></u>
+            <%= post.content %>
+            <br>
+            <button class="btn btn-block btn-warning">
+              <i class="fa fa-thumbs-up"><b></i><%= like_or_dislike_btn(post) %></b>
+            </button>
+            <br><br>
+            <hr>
+          </li>
+        </div>
+        <div>
+          <% post.comments.each do |comment| %>
+            <div>
+              <p>
+                <%= comment.user.email %>:</b> <%= comment.content %>
+              </p>
+              <span> <%= comment.created_at.strftime("%Y/%m/%d") %> </span>
+            </div>
+          <% end %>
+
+          <%= form_for(post.comments.new, url: post_comments_path(post)) do |form| %>
+            <%= form.text_field :content, id: :comment_content, class: 'form-control', placeholder: 'Add new Comment' %>
+            <br>
+            <%= form.submit 'Comment', class: 'btn btn-secondary' %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
   </ol>
   <p> You can create your own posts down here"</p>
   <%= link_to 'Create Post', new_post_path, class: "btn btn-primary" %>
