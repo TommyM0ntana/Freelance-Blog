@@ -1,8 +1,9 @@
-<div class="row">
-  <aside class="col-md-4">
+<div class="row text-center">
+  <aside class="col-lg-12">
     <section>
       <h1><%= @user.email %>'s profile</h1>
+      <p><%= link_to "Create a new post", new_post_path, class: 'btn btn-info'%></p>
     </section>
   </aside>
-  <p>create <%= link_to "A new post here", new_post_path %></p>
+
 </div>
