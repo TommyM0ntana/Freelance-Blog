@@ -1,0 +1,31 @@
+<% if user_signed_in? %>
+  <p>
+    Dear 
+    "<%= current_user.email %>", 
+    below is a list of all posts created already created by other users.
+  </p>
+  <br>
+  <ol>
+  <b><h2>CREATED ARTICLES:</h2></b>
+    <% @posts.each do |post| %>
+      <li>
+        <p>by: <%= post.user.email %><p>
+        <u><i><h6><%= post.title.upcase %></h6></i></u>
+        <%= post.content %>
+        <br><br>
+        <hr>
+      </li>
+    <% end %>
+  </ol>
+  <p> You can create your own posts down here"</p>
+  <%= link_to 'Create Post', new_post_path, class: "btn btn-primary" %>
+  <%= link_to 'Other users', users_path, class: 'btn btn-info' %>
+  <p><%= link_to "Your Profile", current_user, class: "btn btn-light" %></p>
+
+
+<% else %>
+  <h1 class="mt-5">Welcome to the facebook clone</h1>
+  <p class="lead">Please register or sign in to continue.</p>
+  <%= link_to 'Sign up',  new_user_registration_path, class: "btn btn-success" %>
+  <%= link_to 'Sign in',  new_user_session_path, class: "btn btn-secondary" %>
+<% end %>

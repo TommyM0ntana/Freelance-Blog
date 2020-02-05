@@ -1,0 +1,16 @@
+<div class="row">
+  <aside class="col-md-12">
+    <section>
+    <ol>
+      <h1>All the user registered: </h1>
+      <%= @users.each do |user| %>
+        <li>
+          <%= user.email %>
+          <hr>
+        </li>
+      <% end %>
+    </ol>
+    <p>Go <%= link_to "back home", posts_path %></p>
+    </section>
+  </aside>
+</div>
