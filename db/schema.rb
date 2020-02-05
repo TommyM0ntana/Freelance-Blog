@@ -16,9 +16,9 @@ ActiveRecord::Schema.define(version: 2020_02_05_185047) do
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "post_id", null: false
-    t.text "comment"
+    t.bigint "user_id"
+    t.bigint "post_id"
+    t.text "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["post_id"], name: "index_comments_on_post_id"
@@ -28,9 +28,9 @@ ActiveRecord::Schema.define(version: 2020_02_05_185047) do
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.text "content"
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
@@ -46,7 +46,4 @@ ActiveRecord::Schema.define(version: 2020_02_05_185047) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "comments", "posts"
-  add_foreign_key "comments", "users"
-  add_foreign_key "posts", "users"
 end
