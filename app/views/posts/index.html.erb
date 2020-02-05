@@ -17,7 +17,7 @@
               user_path(post.user) %>
               On: <span class='post-date'> 
               <%= post.created_at.strftime("%Y/%m/%d") %>
-              </p>
+            </p>
             <u><i><h6><%= post.title.upcase %></h6></i></u>
             <%= post.content %>
             <br>
@@ -25,16 +25,18 @@
               <i class="fa fa-thumbs-up"><b></i><%= like_or_dislike_btn(post) %></b>
             </button>
             <br><br>
-            <hr>
           </li>
         </div>
         <div>
           <% post.comments.each do |comment| %>
             <div>
-              <p>
-                <%= comment.user.email %>:</b> <%= comment.content %>
+              <p class="col-lg-12">
+                <i><%= link_to post.user.email, user_path(post.user) %></i> 
+                commented on this, on: <b>"<%= comment.created_at.strftime("%Y/%m/%d") %>"</b>
+                <br>
+                <b> <%= comment.content %> </b>
+                <hr>     
               </p>
-              <span> <%= comment.created_at.strftime("%Y/%m/%d") %> </span>
             </div>
           <% end %>
 
@@ -43,6 +45,7 @@
             <br>
             <%= form.submit 'Comment', class: 'btn btn-secondary' %>
           <% end %>
+          <hr>
         </div>
       <% end %>
     </div>
