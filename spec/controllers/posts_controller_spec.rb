@@ -1,31 +1,38 @@
 require 'rails_helper'
 
 RSpec.describe PostsController, type: :controller do
-  describe 'GET #index' do
-    it 'returns http success' do
-      get :index
-      expect(response).to have_http_status(:success)
+  describe 'GET posts#show' do
+    it 'should render posts#show template' do
     end
   end
 
-  describe 'GET #new' do
-    it 'returns http success' do
-      get :new
-      expect(response).to have_http_status(:success)
+  describe 'GET posts#new' do
+    it 'should render posts#new template' do
     end
   end
 
-  describe 'GET #show' do
-    it 'returns http success' do
-      get :show
-      expect(response).to have_http_status(:success)
+  describe 'GET posts#index' do
+    it 'should render posts#index template' do
     end
   end
 
-  describe 'GET #create' do
-    it 'returns http success' do
-      get :create
-      expect(response).to have_http_status(:success)
+  describe 'GET posts#create' do
+    it 'should render posts#create template' do
+    end
+  end
+
+  describe 'GET posts#edit' do
+    it 'should render posts#edit template' do
+    end
+  end
+
+  describe 'GET posts#update' do
+    it 'should render posts#update template' do
+    end
+  end
+
+  describe 'GET posts#destroy' do
+    it 'should render posts#destroy template' do
     end
   end
 end

@@ -1,17 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
-  describe 'GET #index' do
-    it 'returns http success' do
-      get :index
-      expect(response).to have_http_status(:success)
+  describe 'GET index#show' do
+    it 'should render index#show template' do
     end
   end
 
-  describe 'GET #show' do
-    it 'returns http success' do
-      get :show
-      expect(response).to have_http_status(:success)
+  describe 'GET users#show' do
+    it 'should render users#show template' do
     end
   end
 end
