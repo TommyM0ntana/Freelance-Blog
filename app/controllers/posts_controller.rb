@@ -1,11 +1,10 @@
 class PostsController < ApplicationController
-  before_action :retrieve_post, except: %i[new create index]
-  before_action :authenticate_user!, only: %i[new create edit update destroy]
-  before_action :required_login
+  before_action :authenticate_user!
 
   def index
-    @posts = Post.all
-    # @post = Post.new
+    # @posts = Post.all
+    @post = Post.new
+    timeline_posts
   end
 
   def new
@@ -18,35 +17,22 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(post_params)
-    if @post.valid?
-      @post.save
-      redirect_to posts_url, flash: { success: 'Post shared successfully!' }
+    if @post.save
+      redirect_to posts_path, notice: 'Post shared successfully!'
     else
-      render 'new', flash: { danger: 'Post was not shared' }
-    end
-  end
-
-  def edit; end
-
-  def destroy
-    @post.destroy
-    redirect_to root_path
-  end
-
-  def update
-    if @post.update(params[:post][:content])
-      flash[:success] = 'Post was successfully updated'
-      redirect_to @post
-    else
-      flash[:error] = 'Something went wrong'
-      render 'edit'
+      timeline_posts
+      render :index, alert: 'Post was not shared'
     end
   end
 
   private
 
+  def timeline_posts
+    @timeline_posts ||= Post.all.ordered_by_most_recent.includes(:user)
+  end
+
   def post_params
-    params.require(:post).permit(:title, :content, :user_id)
+    params.require(:post).permit(:title, :content)
   end
 
   def retrieve_post
