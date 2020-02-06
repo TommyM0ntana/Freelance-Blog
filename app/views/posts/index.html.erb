@@ -1,8 +1,7 @@
 <% if user_signed_in? %>
   <p>
-    Dear 
-    "<%= current_user.email %>", 
-    below is a list of all posts created already created by other users.
+    Logged in as:
+    (@<%= current_user.email %>)
   </p>
   <br>
   <b><h2>CREATED ARTICLES:</h2></b>
@@ -20,9 +19,9 @@
             </p>
             <u><i><h6><%= post.title.upcase %></h6></i></u>
             <%= post.content %>
-            <br>
+            <br><br>
             <button class="btn btn-block btn-warning">
-              <i class="fa fa-thumbs-up"><b></i><%= like_or_dislike_btn(post) %></b>
+              <i class="fa fa-thumbs-up"></i><b><%= like_or_dislike_btn(post) %></b>
             </button>
             <br><br>
           </li>
