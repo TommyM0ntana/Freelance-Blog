@@ -1,27 +1,63 @@
 <% if user_signed_in? %>
   <p>
-    Dear 
-    "<%= current_user.email %>", 
-    below is a list of all posts created already created by other users.
+    Logged in as:
+    (@<%= current_user.email %>)
   </p>
   <br>
+  <b><h2>CREATED POSTS:</h2></b>
+  <div>
   <ol>
-  <b><h2>CREATED ARTICLES:</h2></b>
-    <% @posts.each do |post| %>
-      <li>
-        <p>by: <%= post.user.email %><p>
-        <u><i><h6><%= post.title.upcase %></h6></i></u>
-        <%= post.content %>
-        <br><br>
-        <hr>
-      </li>
-    <% end %>
+    <div>
+      <% @posts.each do |post| %>
+        <div>
+          <li>
+            <p>
+              by: <%= link_to post.user.email, 
+              user_path(post.user) %>
+              On: <span class='post-date'> 
+              <%= post.created_at.strftime("%Y/%m/%d") %>
+            </p>
+            <u><i><h6><%= link_to post.title.upcase, post_path(post.user) %></h6></i></u>
+            <%= post.content %>
+            <br><br>
+            <p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+            <% pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
+            
+            <% if pre_like %>
+              <%= button_to 'Unlike', post_like_path(post, pre_like), method: :delete %>
+            <% else %>
+              <%= button_to 'Like', post_likes_path(post), method: :post %>
+            <% end %>
+            
+            <br><br>
+          </li>
+        </div>
+        <div>
+          <% post.comments.each do |comment| %>
+            <div>
+              <p class="col-lg-12">
+                <i><%= link_to post.user.email, user_path(post.user) %></i> 
+                commented on this, on: <b>"<%= comment.created_at.strftime("%Y/%m/%d") %>"</b>
+                <br>
+                <b> <%= comment.content %> </b>
+                <hr>     
+              </p>
+            </div>
+          <% end %>
+
+          <%= form_for(post.comments.new, url: post_comments_path(post)) do |form| %>
+            <%= form.text_field :content, id: :comment_content, class: 'form-control', placeholder: 'Add new Comment' %>
+            <br>
+            <%= form.submit 'Comment', class: 'btn btn-secondary' %>
+          <% end %>
+          <hr>
+        </div>
+      <% end %>
+    </div>
   </ol>
   <p> You can create your own posts down here"</p>
   <%= link_to 'Create Post', new_post_path, class: "btn btn-primary" %>
   <%= link_to 'Other users', users_path, class: 'btn btn-info' %>
-  <p><%= link_to "Your Profile", current_user, class: "btn btn-light" %></p>
-
 
 <% else %>
   <h1 class="mt-5">Welcome to the facebook clone</h1>
