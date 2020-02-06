@@ -31,6 +31,9 @@ gem 'devise', '~> 4.7', '>= 4.7.1'
 # A generalized Rack framework for multiple-provider authentication.
 gem 'omniauth'
 
+# A Ruby wrapper for Gravatar URLs
+gem 'gravtastic'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
