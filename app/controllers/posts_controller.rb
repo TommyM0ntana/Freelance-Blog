@@ -19,9 +19,15 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to posts_path, notice: 'Post shared successfully!'
     else
-      timeline_posts
       render :index, alert: 'Post was not shared'
     end
+  end
+
+  def edit
+    @post = Post.find_by(id: params[:format])
+    @like = Like.new
+    @posts = Post.all
+    @comment = Comment.new
   end
 
   private

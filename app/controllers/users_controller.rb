@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def index
     # user feed
-    @users = User.all
+    @users = User.where('id != ?', current_user.id)
   end
 
   def show
