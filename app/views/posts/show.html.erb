@@ -1,12 +1,14 @@
 <div class="row">
-  <aside class="col-md-4">
-    <p> by: <%= @post.user.email %> <p>
-    <h2><%= "Name: #{@user.email}" %></h2>
+  <aside class="col-md-12"> 
+    <p>The post you reacted to, was by: <b><%= @post.user.email %></b><p>
     <section>
       <b><i><u><%= @post.title %></u></i></b>
       <br>
       <%= @post.content %>
-      <p><%= link_to  "Delete post", @post, method: :delete, class: "btn btn-danger" %></p>
+      <%= button_to 'Like', post_likes_path(@post), method: :post %>
+      <p><%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+      <br><br>
+      <%= link_to "Return to Feeds", root_path, class: 'btn btn-info'%></p>
     </section>
   </aside>
 </div>
