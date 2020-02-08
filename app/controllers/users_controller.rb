@@ -12,8 +12,11 @@ class UsersController < ApplicationController
 
   def show
     # user profile
-    @user = User.find(params[:id])
+    @user = User.find_by(id: params[:id])
     @posts = Post.all
     @friendship = Friendship.new
+    @comment = Comment.new
+    @like = Like.new
+    @post = Post.new
   end
 end

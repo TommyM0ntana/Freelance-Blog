@@ -28,6 +28,7 @@
       <div class="col-sm">
         <div>
           <h6><u>Friends Zone</u></h6>
+          
           <% if current_user.friends.include?(@user) %>
             <br><p> You are friends with: </p>
           <% else %>
@@ -36,14 +37,17 @@
               <%= f.submit "Add As Friend", class: "btn btn-primary" %>
             <% end %>
           <% end %>
+        
         </div>
         <hr>
+        
         <div class=" bg-white px-3 py-3 friends">
           <h3><%= link_to 'Friends', friendships_path %> </h3>
           <% @user.friends.each do |friend|%>
           <%= render friend %>
           <%end%>
         </div>
+      
       </div>
     </section>
 </div>
