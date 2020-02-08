@@ -11,6 +11,8 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <%= stylesheet_link_tag  "application" %>
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -41,8 +43,8 @@
             <% if user_signed_in? %>
             <li class="nav-item">
               <%= link_to 'Create Post', new_post_path, class: "btn btn-primary" %>
+              <%= link_to 'Community', users_path, class: 'btn btn-primary' %>
               <%= link_to 'Profile', current_user, class: "btn btn-primary" %>
-                <%= link_to 'Community', users_path, class: 'btn btn-primary' %>
             </li>
             <% end %>
           </ul>
