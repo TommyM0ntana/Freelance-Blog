@@ -44,7 +44,7 @@
               <%= link_to 'Create Post', new_post_path, class: "btn btn-primary" %>
               <%= link_to 'Community', users_path, class: 'btn btn-primary' %>
               <%= link_to 'Profile', current_user, class: "btn btn-primary" %>
-              <%= link_to 'Logout', destroy_user_session_path, class: "btn btn-primary" %>        
+              <%= link_to 'Sign out', destroy_user_session_path, class: "btn btn-primary", :method => :delete %>     
             </li>
             <% end %>
           </ul>

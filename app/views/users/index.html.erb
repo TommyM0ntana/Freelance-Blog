@@ -31,7 +31,7 @@
         <tr>
           <td> <%= image_tag user.gravatar_url, class: "rounded-circle mx-auto" %> </td>
 
-          <td class="align-middle"><h4 class=""><%= link_to user.email, users_show_path(user)%></h4> </td>
+          <td class="align-middle"><h4 class=""><%= link_to user.email, user_path(user)%></h4> </td>
 
           <td class="align-middle"> 
             <% if current_user.friend?(user) %>
