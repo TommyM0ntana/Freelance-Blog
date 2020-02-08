@@ -1,90 +1,126 @@
 <% if current_user %>
+  
   <p>
     <%= current_user.email %>'s timeline:
   </p>
+  
   <div class="container">
     <div class="col-sm">
       <div class="card">
         <div class="card-body">
+          
           <% @posts.each do |post| %>
+            
             <section class="card-header">
               <div class="row">
                 <div class="col-md-12">
                   <div class="media">
+                    
                     <div class="media-left">
                       <%= link_to image_tag(post.user.gravatar_url, 
                         class: "gravatar rounded-circle mx-auto small_avatar", 
                         :size => 35), user_path(post.user) %>
                     </div>
+                    
                     <div class="media-body">
+                      
                       <a class="anchor-username">
                         <h4 class="media-heading">
                           <%= link_to post.user.email, user_path(post.user) %>
                         </h4>
                       </a>
-                      <a 
-                        class="anchor-time"><%= link_to time_ago_in_words(post.created_at), 
+                      
+                      <a class="anchor-time">
+                        <%= link_to time_ago_in_words(post.created_at), 
                         post_path(post.user) %> ago
                       </a>
+                    
                     </div>
+                  
                   </div>
                 </div>
+              
                 <div class="col-md-1">
                   <a href="#"><i class="glyphicon glyphicon-chevron-down"></i></a>
                 </div>
+              
               </div>             
             </section>
+
             <section class="card-body">
-              <h6>post:<h6>
+            
               <p>
                 <%= post.content %>
               </p>
-            </section>
+              <p>
+                <%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%>
+              </p>
+              
+              <% pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
+                  
+              <% if pre_like %>
+                <%= button_to 'Unlike', post_like_path(post, pre_like), method: :delete %>
+              <% else %>
+                <%= button_to 'Like', post_likes_path(post), method: :post %>
+              <% end %>
+            
+            </section>     
+            
             <section>
-            <hr>
-              <div>
-                <div>
-                  <div class="comment-wrapper">
-                    <div class="card card-success">
-                      <div class="bg-primary">
-                        <span style="color:white;">
-                          Comment panel
-                        </span>
-                      </div>
-                      <div class="card-body">
-                      <textarea class="form-control" placeholder="write a comment..." rows="3"></textarea>
-                      <br>
-                      <button type="button" class="btn btn-info pull-right">Post</button>
+              <hr>
+              <div class="comment-wrapper">
+                <div class="card card-success">
+                  <div class="bg-primary">
+                    
+                    <span style="color:white;">
+                      Comment panel
+                    </span>
+                  
+                  </div>
+            
+                  <div class="card-body">
+                      
+                      <%= form_for(post.comments.new, url: post_comments_path(post)) do |form| %>
+                        <%= form.text_field :content, id: :comment_content, class: 'form-control myform', placeholder: 'write a comment...' %>
+                        <br>
+                        <%= form.submit 'Comment', class: 'btn btn-info' %>
+                      <% end %>
+                      
                       <div class="clearfix"></div>
                       <hr>
-                      <ul class="media-list">
-                        <li class="media">
-                          <a href="#" class="pull-left">
-                            <img src="https://bootdey.com/img/Content/user_1.jpg" alt="" class="img-circle">
-                          </a>
-                          <div class="media-body">
-                            <span class="text-muted pull-right">
-                              <small class="text-muted">30 min ago</small>
-                            </span>
-                            <strong class="text-success">@MartinoMont</strong>
+                      <% post.comments.each do |comment| %>
+                      
+                        <ul class="media-list">
+                          <li class="media">
+                            <a class="pull-left">
+                              <%= link_to image_tag(post.user.gravatar_url, class: "gravatar mx-auto small_avatar", 
+                              :size => 45), user_path(post.user) %>
+                            </a>
+                            <div class="media-body">
+                              <span class="text-muted pull-right">
+                                <small class="text-muted">  <%= link_to time_ago_in_words(post.created_at), post_path(post.user) %> ago</small>
+                              </span>
+                              <strong class="text-success">@<%= post.user.email %></strong>
                               <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                Lorem ipsum dolor sit amet, <a href="#">#consecteturadipiscing </a>.
+                                <%= comment.content %>
                               </p>
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
+                            </div>
+                          </li>
+                        </ul>       
+
+                      <% end %>
+
                   </div>
                 </div>
               </div>
-            </div>
-          </section>
-        <% end %>
-      </div>
-    </div>   
+            </section>
+
+            <br><hr><hr><br>
+          <% end %>
+        </div>
+      </div>   
+    </div>
   </div>
-</div>
 <% else %>
   <h1 class="mt-5">Welcome to the facebook clone</h1>
   <p class="lead">Please register or sign in to continue.</p>
