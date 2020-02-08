@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   def show
     # user profile
     @user = User.find(params[:id])
-    @posts = @user.posts.ordered_by_most_recent
+    @posts = Post.all
     @friendship = Friendship.new
   end
 end

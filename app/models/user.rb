@@ -3,8 +3,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-         include Gravtastic
-         gravtastic
+  include Gravtastic
+  gravtastic
   # Validation for user tests
   #   validates :first_name, presence: true, length: { maximum: 50 }
   #   validates :last_name, presence: true, length: { maximum: 50 }

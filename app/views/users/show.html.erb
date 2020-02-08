@@ -1,12 +1,50 @@
-<div class="row text-center">
-  <aside class="col-lg-12">
-    <section>
-      <h1><%= @user.email %>'s profile</h1>
-      <% if user_signed_in? %>
-      <%= image_tag current_user.gravatar_url, :class => "gravatar" %>
-      <% end %>
-      <p><%= link_to "Back home", root_path, class: 'btn btn-info'%></p>      
+<div class="container">
+    <section class="row">
+      <div class="col-sm">
+        <p>
+          <%= image_tag current_user.gravatar_url, class: " gravatar rounded-circle mx-auto small_avatar" %>
+          &nbsp;
+          <% if current_user %>
+            <b>Your Profile</b>
+          <% else %>
+            <u><b><%= @user.email %>'s profile</b></u>
+          <% end %>
+        </p>
+      </div>
+      
+      <div class="col-sm">
+        <div>
+          <% if current_user %>
+            <h6><u>Your posts:</u></h6>
+          <% else %>
+            <h6><u><%= user.post %>'s posts:</u></h6>
+          <% end %>
+          <ul>
+            <li><% @posts %></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="col-sm">
+        <div>
+          <h6><u>Friends Zone</u></h6>
+          <% if current_user.friends.include?(@user) %>
+            <br><p> You are friends with: </p>
+          <% else %>
+            <%= form_for(@friendship, url: friendships_path(@friendship)) do |f| %>
+              <%= f.hidden_field :friend_id, value: @user.id  %>
+              <%= f.submit "Add As Friend", class: "btn btn-primary" %>
+            <% end %>
+          <% end %>
+        </div>
+        <hr>
+        <div class=" bg-white px-3 py-3 friends">
+          <h3><%= link_to 'Friends', friendship_path %> </h3>
+          <% @user.friends.each do |friend|%>
+          <%= render friend %>
+          <%end%>
+        </div>
+      </div>
     </section>
-  </aside>
 </div>
 
