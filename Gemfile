@@ -22,6 +22,11 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+# This gem provides jQuery and the jQuery-ujs driver for your Rails 4+ application.
+gem 'jquery-rails', '~> 4.3', '>= 4.3.5'
+
+# This gem provides rails-ujs driver for Rails applications.
+gem 'rails-ujs', '~> 0.1.0'
 # Set-up Rubocop in your local env - it will help you to find style errors
 gem 'rubocop'
 
