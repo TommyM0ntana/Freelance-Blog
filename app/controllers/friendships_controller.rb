@@ -5,6 +5,10 @@ class FriendshipsController < ApplicationController
     @requests = current_user.friend_requests
   end
 
+  def show
+    @friendship
+  end
+
   def create
     @friendship = current_user.friendships.build(friendship_params)
     return unless @friendship.save

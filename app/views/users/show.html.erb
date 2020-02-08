@@ -39,7 +39,7 @@
         </div>
         <hr>
         <div class=" bg-white px-3 py-3 friends">
-          <h3><%= link_to 'Friends', friendship_path %> </h3>
+          <h3><%= link_to 'Friends', friendships_path %> </h3>
           <% @user.friends.each do |friend|%>
           <%= render friend %>
           <%end%>
