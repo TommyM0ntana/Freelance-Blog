@@ -44,8 +44,8 @@
             <%= link_to "Request already sent", "#", class: "btn btn-success"%>
 
           <% elsif current_user.friend_requests.include?(user) %>
-            <%= link_to "Accept Friend Request",@friendship, method: :create, class: "btn btn-success"%>
-            <%= link_to  'Decline Friendship',@friendship, method: :delete, class: 'btn btn-danger' %>
+            <%= link_to "Accept Friend Request", @friendship, method: :post, class: "btn btn-success"%>
+            <%= link_to  'Decline Friendship', @friendship, method: :delete, class: 'btn btn-danger' %>
 
           <% else %>
               <%= form_for(@friendship, url: friendships_path(@friendship)) do |f| %>
