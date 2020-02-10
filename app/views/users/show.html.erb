@@ -1,54 +1,32 @@
 <div class="container">
     <section class="row">
+
       <div class="col-sm">
         <p>
           <%= image_tag current_user.gravatar_url, class: " gravatar rounded-circle mx-auto small_avatar" %>
           &nbsp;
           <% if current_user %>
-            <b>Your Profile</b>
+            <b><br><br>Hello (<%= current_user.email %>!) Welcome to your Personal SPACE! <hr></b>
           <% else %>
             <u><b><%= @user.email %>'s profile</b></u>
           <% end %>
         </p>
       </div>
-      
-      <div class="col-sm">
-        <div>
-          <% if current_user %>
-            <h6><u>Your posts:</u></h6>
-          <% else %>
-            <h6><u><%= user.post %>'s posts:</u></h6>
-          <% end %>
-          <ul>
-            <li><% @posts %></li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="col-sm">
-        <div>
-          <h6><u>Friends Zone</u></h6>
-          
-          <% if current_user.friends.include?(@user) %>
-            <br><p> You are friends with: </p>
-          <% else %>
-            <%= form_for(@friendship, url: friendships_path(@friendship)) do |f| %>
-              <%= f.hidden_field :friend_id, value: @user.id  %>
-              <%= f.submit "Add As Friend", class: "btn btn-primary" %>
-            <% end %>
-          <% end %>
-        
-        </div>
-        <hr>
-        
+
+      <div class="col-sm"> 
         <div class=" bg-white px-3 py-3 friends">
-          <h3><%= link_to 'Friends', friendships_path %> </h3>
+          <h3><%= link_to 'Your Are Friends With:', '#' %> </h3>
+          <br>
           <% @user.friends.each do |friend|%>
-          <%= friend.email %>
+          <ol>
+            <li>
+              <%= friend.email %>
+            </li>
+          </ol>
           <%end%>
         </div>
-      
       </div>
+
     </section>
 </div>
 
