@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   def show
     # user profile
     @user = User.find_by(id: params[:id])
-    @posts = Post.all
+    @posts = @user.posts.order('created_at DESC')
     @friendship = Friendship.new
     @comment = Comment.new
     @like = Like.new
