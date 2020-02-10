@@ -21,20 +21,21 @@ class FriendshipsController < ApplicationController
     @user = User.find_by(id: params[:format])
     current_user.confirm_friend(@user)
     flash[:success] = 'Friend Request Confirmed'
-    redirect_to friends_path
+    redirect_to users_path
   end
 
   def cancel
     @user = User.find_by(id: params[:format])
     current_user.cancel_friend_request(@user)
     flash[:success] = 'Friend Request Canceled'
-    redirect_to friends_path
+    redirect_to users_path
   end
 
   def destroy
-    @user = User.find_by(user_id: params[:format])
-    current_user.friends.delete(@user)
-    flash[:danger] = 'Removed Friend'
+    @friend1 = Friendship.where(user_id: params[:format], friend_id: current_user.id)
+    @friend2 = Friendship.where(user_id: current_user.id, friend_id: params[:format])
+    @friend = @friend1 || @friend2
+    flash[:danger] = 'Removed Friend' if @friend.delete_all
     redirect_to users_path
   end
 
