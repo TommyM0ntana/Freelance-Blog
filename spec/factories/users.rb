@@ -1,7 +1,7 @@
 require 'faker'
 
 FactoryBot.define do
-  factory :user, alias: %i[friend] do
+  factory :user do
     email { Faker::Internet.email }
     password { Faker::Internet.password }
   end

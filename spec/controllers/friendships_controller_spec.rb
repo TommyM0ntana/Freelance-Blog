@@ -1,16 +1,19 @@
 require 'rails_helper'
 
 RSpec.describe FriendshipsController, type: :controller do
-  fixtures :users
+  include Devise::Test::IntegrationHelpers
 
-  describe 'GET #create' do
-    it 'returns http success' do
-      @request.env['devise.mapping'] = Devise.mappings[:user]
-      sign_in users(:one)
-      current_user = users(:one)
-      user1 = users(:two)
-      current_user.friendships.build(friend_id: user1.id)
-      expect(response).to have_http_status(200)
+  let!(:user) do
+    User.create(email: 'test-1@test.com', password: 'password', password_confirmation: 'password')
+  end
+
+  let!(:second_user) do
+    User.create(email: 'test-2@test.com', password: 'password', password_confirmation: 'password')
+  end
+
+  describe 'actions with friendships' do
+    it 'sending and cancelling a request for friendship' do
+      sign_in user
     end
   end
 end
