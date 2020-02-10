@@ -1,7 +1,13 @@
+require 'faker'
+
 FactoryBot.define do
   factory :comment do
-    user { nil }
-    post { nil }
-    comment { 'MyText' }
+    content { Faker::Lorem.paragraph }
+    association :user
+    association :post
+
+    trait :invalid do
+      content { '' }
+    end
   end
 end

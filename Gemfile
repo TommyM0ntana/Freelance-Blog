@@ -30,6 +30,9 @@ gem 'rails-ujs', '~> 0.1.0'
 # Set-up Rubocop in your local env - it will help you to find style errors
 gem 'rubocop'
 
+# Faker, a port of Data::Faker from Perl, is used to easily generate fake data: names, addresses, phone numbers, etc.
+gem 'faker', '~> 2.10', '>= 2.10.1'
+
 # Flexible authentication solution for Rails with Warden
 gem 'devise', '~> 4.7', '>= 4.7.1'
 

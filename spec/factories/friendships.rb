@@ -1,7 +1,14 @@
 FactoryBot.define do
   factory :friendship do
-    user { nil }
-    friend { nil }
-    status { false }
+    association :user
+    association :friend
+
+    trait :not_confirmed do
+      status { nil }
+    end
+
+    trait :confirmed do
+      status { true }
+    end
   end
 end

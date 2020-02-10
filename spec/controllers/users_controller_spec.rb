@@ -1,13 +1,9 @@
 require 'rails_helper'
+require 'devise'
 
 RSpec.describe UsersController, type: :controller do
-  describe 'GET index#show' do
-    it 'should render index#show template' do
-    end
-  end
-
-  describe 'GET users#show' do
-    it 'should render users#show template' do
-    end
-  end
+  # it "should get index" do
+  #   get 'index'
+  #   response.should be_success
+  # end
 end
