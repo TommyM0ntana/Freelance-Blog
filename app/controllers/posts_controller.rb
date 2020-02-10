@@ -3,7 +3,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = (current_user.friends.map(&:posts) + current_user.posts).flatten
-    # @comments = @post.comment.includes(:user)   
+    # @comments = @post.comment.includes(:user)
   end
 
   def new
