@@ -81,7 +81,9 @@
                   <div class="card-body">
                       
                       <%= form_for(post.comments.new, url: post_comments_path(post)) do |form| %>
-                        <%= form.text_field :content, id: :comment_content, class: 'form-control myform', placeholder: 'write a comment...' %>
+                        <%= form.text_field :content, id: :comment_content, 
+                                              class: 'form-control myform', 
+                                              placeholder: 'write a comment...' %>
                         <br>
                         <%= form.submit 'Comment', class: 'btn btn-info' %>
                       <% end %>
@@ -92,24 +94,30 @@
                       
                         <ul class="media-list">
                           <li class="media">
+                            
                             <a class="pull-left">
-                              <%= link_to image_tag(post.user.gravatar_url, class: "gravatar mx-auto small_avatar", 
-                              :size => 45), user_path(post.user) %>
+                              <%= link_to image_tag(post.user.gravatar_url,
+                                          class: "gravatar mx-auto small_avatar", 
+                                          :size => 45), user_path(post.user) %>
                             </a>
-                            <div class="media-body">
+                            
+                            <div class="media-body">  
                               <span class="text-muted pull-right">
-                                <small class="text-muted">  <%= link_to time_ago_in_words(post.created_at), post_path(post.user) %> ago</small>
+                                <small class="text-muted">  
+                                  <%= link_to time_ago_in_words(post.created_at), post_path(post.user) %> ago
+                                </small>
                               </span>
-                              <strong class="text-success">@<%= post.user.email %></strong>
+                              
+                              <strong class="text-success">
+                                @<%= post.user.email %>
+                              </strong>
                               <p>
                                 <%= comment.content %>
                               </p>
                             </div>
                           </li>
                         </ul>       
-
                       <% end %>
-
                   </div>
                 </div>
               </div>

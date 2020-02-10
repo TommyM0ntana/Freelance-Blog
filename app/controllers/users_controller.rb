@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     @users = User.where('id != ?', current_user.id)
     # @pending_friends = current_user.pending_friends
     # @requests = current_user.friend_requests
-    @friends = current_user.friends
+    # @friends = current_user.friends
     @friendship = Friendship.new
   end
 
