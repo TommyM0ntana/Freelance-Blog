@@ -1,12 +1,24 @@
 require 'rails_helper'
 
 RSpec.describe PostsController, type: :controller do
-  # it 'returns http success' do
-  #   @request.env['devise.mapping'] = Devise.mappings[:user]
-  #   sign_in users(:user)
-  #   expect(response).to have_http_status(:success)
-  #   sign_out users(:user)
-  #   get :new
-  #   expect(response).to have_http_status(302)
-  # end
+  describe 'GET index' do
+    it 'has a 302 status code' do
+      get :index
+      expect(response.status).to eq(302)
+    end
+  end
+
+  describe 'GET create' do
+    it 'has a 302 status code' do
+      get :create
+      expect(response.status).to eq(302)
+    end
+  end
+
+  describe 'GET new' do
+    it 'has a 302 status code' do
+      get :new
+      expect(response.status).to eq(302)
+    end
+  end
 end
