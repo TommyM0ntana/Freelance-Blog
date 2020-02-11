@@ -2,8 +2,8 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @posts = (current_user.friends.map(&:posts) + current_user.posts).flatten
-    @posts = Post.all.order('created_at DESC')
+    posts = (current_user.friends.map(&:posts) + current_user.posts).flatten
+    @posts = posts.sort.reverse
     # @comments = @post.comments.includes(:user)
   end
 
