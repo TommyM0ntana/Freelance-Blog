@@ -3,7 +3,8 @@ class PostsController < ApplicationController
 
   def index
     @posts = (current_user.friends.map(&:posts) + current_user.posts).flatten
-    # @comments = @post.comment.includes(:user)
+    @posts = Post.all.order('created_at DESC')
+    # @comments = @post.comments.includes(:user)
   end
 
   def new
@@ -12,6 +13,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @comment = @post.comments.includes(:user)
   end
 
   def create

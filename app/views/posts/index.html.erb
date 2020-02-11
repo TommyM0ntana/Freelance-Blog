@@ -93,21 +93,8 @@
                       <% post.comments.each do |comment| %>
                       
                         <ul class="media-list">
-                          <li class="media">
-                            
-                            <a class="pull-left">
-                              <%= link_to image_tag(post.user.gravatar_url,
-                                          class: "gravatar mx-auto small_avatar", 
-                                          :size => 45), user_path(post.user) %>
-                            </a>
-                            
-                            <div class="media-body">  
-                              <span class="text-muted pull-right">
-                                <small class="text-muted">  
-                                  <%= link_to time_ago_in_words(post.created_at), post_path(post.user) %> ago
-                                </small>
-                              </span>
-                              
+                          <li class="media">                        
+                            <div class="media-body">
                               <strong class="text-success">
                                 @<%= post.user.email %>
                               </strong>
