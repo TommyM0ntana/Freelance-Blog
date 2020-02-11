@@ -17,13 +17,11 @@
         <div class=" bg-white px-3 py-3 friends">
           <h3><%= link_to 'Your Are Friends With:', '#' %> </h3>
           <br>
-          <% @user.friends.each do |friend|%>
           <ol>
-            <li>
-              <%= friend.email %>
-            </li>
+            <% @user.friends.each do | friend |%>
+              <li><%= friend.email %></li><hr>
+            <%end%>
           </ol>
-          <%end%>
         </div>
       </div>
 
