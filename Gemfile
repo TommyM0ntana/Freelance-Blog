@@ -42,6 +42,9 @@ gem 'omniauth'
 # A Ruby wrapper for Gravatar URLs
 gem 'gravtastic'
 
+# Facebook OAuth2 Strategy for OmniAuth
+gem 'omniauth-facebook', '~> 6.0'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
