@@ -4,7 +4,6 @@ class PostsController < ApplicationController
   def index
     posts = (current_user.friends.map(&:posts) + current_user.posts).flatten
     @posts = posts.sort.reverse
-    # @comments = @post.comments.includes(:user)
   end
 
   def new
