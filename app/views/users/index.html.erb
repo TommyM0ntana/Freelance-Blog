@@ -45,7 +45,7 @@
                                                 method: :delete,
                                                 class: 'btn btn-danger' %>
               <% else %>
-                  <%= form_for(@friendship, url: friendships_path(@friendship)) do |f| %>
+                  <%= form_for(@friendship, url: create_friend_path(@friendship)) do |f| %>
                   
                     <%= f.hidden_field :friend_id, value: user.id  %>
                     <%= f.submit "Add As Friend", class: "btn btn-primary" %>
