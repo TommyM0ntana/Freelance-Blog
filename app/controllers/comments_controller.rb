@@ -1,9 +1,8 @@
 class CommentsController < ApplicationController
   def create
-    @comment = Comment.new(comment_params)
-    @comment.post_id = params[:post_id]
-    @comment.user = current_user
-
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.create(comment_params)
+    @comment.user_id = current_user.id # or whatever is you session name
     if @comment.save
       redirect_to posts_path, notice: 'Comment was successfully created.'
     else

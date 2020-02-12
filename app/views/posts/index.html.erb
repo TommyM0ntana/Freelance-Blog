@@ -1,64 +1,121 @@
-<% if user_signed_in? %>
+<% if current_user %>
+  
   <p>
-    Logged in as:
-    (@<%= current_user.email %>)
+    <%= current_user.email %>'s timeline:
   </p>
-  <br>
-  <b><h2>CREATED POSTS:</h2></b>
-  <div>
-  <ol>
-    <div>
-      <% @posts.each do |post| %>
-        <div>
-          <li>
-            <p>
-              by: <%= link_to post.user.email, 
-              user_path(post.user) %>
-              On: <span class='post-date'> 
-              <%= post.created_at.strftime("%Y/%m/%d") %>
-            </p>
-            <u><i><h6><%= link_to post.title.upcase, post_path(post.user) %></h6></i></u>
-            <%= post.content %>
-            <br><br>
-            <p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
-            <% pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
+  
+  <div class="container">
+    <div class="col-sm">
+      <div class="card">
+        <div class="card-body">
+          
+          <% @posts.each do |post| %>
             
-            <% if pre_like %>
-              <%= button_to 'Unlike', post_like_path(post, pre_like), method: :delete %>
-            <% else %>
-              <%= button_to 'Like', post_likes_path(post), method: :post %>
-            <% end %>
+            <section class="card-header">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="media">
+                    
+                    <div class="media-left">
+                      <%= link_to image_tag(post.user.gravatar_url, 
+                        class: "gravatar rounded-circle mx-auto small_avatar", 
+                        :size => 35), user_path(post.user) %>
+                    </div>
+                    
+                    <div class="media-body">
+                      
+                      <a class="anchor-username">
+                        <h4 class="media-heading">
+                          <%= link_to post.user.email, user_path(post.user) %>
+                        </h4>
+                      </a>
+                      
+                      <a class="anchor-time">
+                        <%= link_to time_ago_in_words(post.created_at), 
+                        post_path(post.user) %> ago
+                      </a>
+                    
+                    </div>
+                  
+                  </div>
+                </div>
+              
+                <div class="col-md-1">
+                  <a href="#"><i class="glyphicon glyphicon-chevron-down"></i></a>
+                </div>
+              
+              </div>             
+            </section>
+
+            <section class="card-body">
             
-            <br><br>
-          </li>
-        </div>
-        <div>
-          <% post.comments.each do |comment| %>
-            <div>
-              <p class="col-lg-12">
-                <i><%= link_to post.user.email, user_path(post.user) %></i> 
-                commented on this, on: <b>"<%= comment.created_at.strftime("%Y/%m/%d") %>"</b>
-                <br>
-                <b> <%= comment.content %> </b>
-                <hr>     
+              <p>
+                <%= post.content %>
               </p>
-            </div>
-          <% end %>
+              <p>
+                <%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%>
+              </p>
+              
+              <% pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
+                  
+              <% if pre_like %>
+                <%= button_to 'Unlike', post_like_path(post, pre_like), method: :delete %>
+              <% else %>
+                <%= button_to 'Like', post_likes_path(post), method: :post %>
+              <% end %>
+            
+            </section>     
+            
+            <section>
+              <hr>
+              <div class="comment-wrapper">
+                <div class="card card-success">
+                  <div class="bg-primary">
+                    
+                    <span style="color:white;">
+                      Comment panel
+                    </span>
+                  
+                  </div>
+            
+                  <div class="card-body">
+                      
+                      <%= form_for(post.comments.new, url: post_comments_path(post)) do |form| %>
+                        <%= form.text_field :content, id: :comment_content, 
+                                              class: 'form-control myform', 
+                                              placeholder: 'write a comment...' %>
+                        <br>
+                        <%= form.submit 'Comment', class: 'btn btn-info' %>
+                      <% end %>
+                      
+                      <div class="clearfix"></div>
+                      <hr>
+                      <% post.comments.each do |comment| %>
+                      
+                        <ul class="media-list">
+                          <li class="media">                        
+                            <div class="media-body">
+                              <strong class="text-success">
+                                @<%= post.user.email %>
+                              </strong>
+                              <p>
+                                <%= comment.content %>
+                              </p>
+                            </div>
+                          </li>
+                        </ul>       
+                      <% end %>
+                  </div>
+                </div>
+              </div>
+            </section>
 
-          <%= form_for(post.comments.new, url: post_comments_path(post)) do |form| %>
-            <%= form.text_field :content, id: :comment_content, class: 'form-control', placeholder: 'Add new Comment' %>
-            <br>
-            <%= form.submit 'Comment', class: 'btn btn-secondary' %>
+            <br><hr><hr><br>
           <% end %>
-          <hr>
         </div>
-      <% end %>
+      </div>   
     </div>
-  </ol>
-  <p> You can create your own posts down here"</p>
-  <%= link_to 'Create Post', new_post_path, class: "btn btn-primary" %>
-  <%= link_to 'Other users', users_path, class: 'btn btn-info' %>
-
+  </div>
 <% else %>
   <h1 class="mt-5">Welcome to the facebook clone</h1>
   <p class="lead">Please register or sign in to continue.</p>

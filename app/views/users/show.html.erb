@@ -1,9 +1,30 @@
-<div class="row text-center">
-  <aside class="col-lg-12">
-    <section>
-      <h1><%= @user.email %>'s profile</h1>
-      <p><%= link_to "Back home", root_path, class: 'btn btn-info'%></p>      
+<div class="container">
+    <section class="row">
+
+      <div class="col-sm">
+        <p>
+          <%= image_tag current_user.gravatar_url, class: " gravatar rounded-circle mx-auto small_avatar" %>
+          &nbsp;
+          <% if current_user %>
+            <b><br><br>Hello (<%= current_user.email %>!) Welcome to your Personal SPACE! <hr></b>
+          <% else %>
+            <u><b><%= @user.email %>'s profile</b></u>
+          <% end %>
+        </p>
+      </div>
+
+      <div class="col-sm"> 
+        <div class=" bg-white px-3 py-3 friends">
+          <h3><%= link_to 'Your Are Friends With:', '#' %> </h3>
+          <br>
+          <ol>
+            <% @user.friends.each do | friend |%>
+              <li><%= friend.email %></li><hr>
+            <%end%>
+          </ol>
+        </div>
+      </div>
+
     </section>
-  </aside>
 </div>
 

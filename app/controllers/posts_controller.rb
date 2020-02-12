@@ -2,8 +2,8 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @posts = Post.all
-    @post = Post.new
+    posts = (current_user.friends.map(&:posts) + current_user.posts).flatten
+    @posts = posts.sort.reverse
   end
 
   def new
@@ -12,6 +12,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @comment = @post.comments.includes(:user)
   end
 
   def create
@@ -19,9 +20,15 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to posts_path, notice: 'Post shared successfully!'
     else
-      timeline_posts
       render :index, alert: 'Post was not shared'
     end
+  end
+
+  def edit
+    @post = Post.find_by(id: params[:format])
+    @like = Like.new
+    @posts = Post.all
+    @comment = Comment.new
   end
 
   private
