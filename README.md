@@ -23,6 +23,7 @@ Additional description about the project and its features.
 
 > **If you want to checkout the working of the code in your local machine, first off, you need to clone this repo and install the required dependecies in your sysytem. The instructions to do this are listed below.**
 >> To get a local copy up and running follow these simple example steps.
+---
 
 ### Prerequisites
 
@@ -33,15 +34,15 @@ Additional description about the project and its features.
 >> 4. git knowledge.
 >> 5. postgresql database installed in the local machine.
 
+***
+
 ### Setup
 
-***
 ```git clone git@github.com:ChristianOtieno/rails-facebook.git```
 ***
 
 ### Install
 
-***
 1.```bundle install```
 
 2.```rails db:create```
@@ -51,13 +52,11 @@ Additional description about the project and its features.
 
 ### Usage
 
-***
 ```rails server```
 ***
 
 ### Run tests
 
-***
 ```rspec```
 ***
 
