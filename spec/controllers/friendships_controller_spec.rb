@@ -46,4 +46,3 @@ RSpec.describe FriendshipsController, type: :controller do
     end
   end
 end
-
