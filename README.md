@@ -21,9 +21,9 @@ Additional description about the project and its features.
 
 ## Getting Started
 
-> **If you want to checkout the working of the code in your local machine, first off, you need to clone this repo and install the required dependecies in your sysytem. The instructions to do this are listed below.**
+> **If you want to checkout the working of the code in your local machine, first off, you need to clone this repo and install the required dependencies in your system. The instructions to do this are listed below:**
 >> To get a local copy up and running follow these simple example steps.
----
+***
 
 ### Prerequisites
 
