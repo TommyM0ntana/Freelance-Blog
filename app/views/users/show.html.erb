@@ -15,16 +15,24 @@
 
       <div class="col-sm"> 
         <div class=" bg-white px-3 py-3 friends">
-          <h3><%= link_to 'Your Are Friends With:', '#' %> </h3>
+          
+          <h3><%= link_to 'Your Are Friends With:', '#' %></h3>
           <br>
           <ol>
             <% @user.friends.each do | friend |%>
               <li><%= friend.email %></li><hr>
             <%end%>
           </ol>
+          
+        <% if !current_user.mutual_friends(@user).nil?%>
+          <h3><%= link_to 'Your Are mutual Friends With:', '#' %></h3>
+          <ol>
+            <% current_user.mutual_friends(@user).each do |mutual_friend|%>
+              <li><%= mutual_friend.email %></li>
+            <%end%>
+          </ol>
+        <% end %>
         </div>
       </div>
-
     </section>
 </div>
-

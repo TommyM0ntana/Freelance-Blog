@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root to: "posts#index"
+  post 'create_friend' => "friendships#create"
   delete 'remove_friend' => 'friendships#destroy'
   get 'accept_friend_request' => 'friendships#confirm'
   put 'accept_friend_request' => 'friendships#confirm'

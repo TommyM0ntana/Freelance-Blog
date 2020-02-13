@@ -11,6 +11,7 @@ class FriendshipsController < ApplicationController
 
   def create
     @friendship = current_user.friendships.build(friendship_params)
+    Friendship.create(user_id: current_user.id, friend_id: @friendship.id)
     return unless @friendship.save
 
     flash[:success] = 'Friend request sent'
