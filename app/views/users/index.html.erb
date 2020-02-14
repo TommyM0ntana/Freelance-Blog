@@ -1,0 +1,59 @@
+<div class="row">
+  <div class="col-md-12">
+    <h1>The Community: </h1>
+    <p>Go <%= link_to "back home", posts_path %>.</p>
+
+    <table class="table">
+      
+      <thead>
+        <tr> 
+          <th scope="col">Profile</th>
+          <th scope="col">Email</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      
+      <% @users.each do |user| %>
+        <tbody>
+          <tr>
+            <td>
+              <%= image_tag user.gravatar_url, class: "rounded-circle mx-auto" %>
+            </td>
+
+            <td class="align-middle"><h4 class="">
+              <%= link_to user.email, user_path(user)%></h4>
+            </td>
+            
+            <td class="align-middle">
+              <% if current_user.friend?(user) %>
+                <%= link_to "Remove Friend", remove_friend_path(user), 
+                                                method: :delete,
+                                                data: { confirm: "Are You sure?" },
+                                                class: "btn btn-danger" %> 
+                  
+              <% elsif current_user.pending_friends.include?(user) %>
+                <%= link_to "Cancel Friend Request", cancel_friend_request_path(user), 
+                                                method: :delete, 
+                                                class: "btn btn-warning"%>
+
+              <% elsif current_user.friend_requests.include?(user) %>
+                <%= link_to "Accept Friend Request", accept_friend_request_path(user), 
+                                                method: :put, 
+                                                class: "btn btn-info"%>
+                
+                <%= link_to  'Decline Friendship', decline_frienship_path(user),
+                                                method: :delete,
+                                                class: 'btn btn-danger' %>
+              <% else %>
+                  <%= form_for(@friendship, url: create_friend_path(@friendship)) do |f| %>
+                  
+                    <%= f.hidden_field :friend_id, value: user.id  %>
+                    <%= f.submit "Add As Friend", class: "btn btn-primary" %>
+                  <% end %>
+              <% end %>
+            </td>
+
+          </tr>
+      <% end %>
+  </div>
+</div>
