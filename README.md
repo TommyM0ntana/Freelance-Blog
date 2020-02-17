@@ -17,7 +17,7 @@ Additional description about the project and its features.
 
 ## Live Demo
 
-[The App](https://livedemo.com)
+[The App](https://afternoon-fortress-90229.herokuapp.com/)
 
 ## Getting Started
 
