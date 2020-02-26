@@ -1,6 +1,6 @@
-# Ruby on Rails Facebook-Clone Application
+# Ruby on Rails Freelance Blog Application
 
-> In this project we are building a Facebook-like social network application.
+> In this project we are building a Freelance social network application.
 
 ![screenshot](./app/assets/images/facebookclone-pic.png)
 
@@ -76,7 +76,7 @@ Additional description about the project and its features.
 
 ## Project specifications
 
-You can find project specifications [here](https://www.theodinproject.com/courses/ruby-on-rails/lessons/final-project)
+
 
 ## 🤝 Contributing
 
