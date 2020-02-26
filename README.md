@@ -17,7 +17,7 @@ Additional description about the project and its features.
 
 ## Live Demo
 
-[The App](https://afternoon-fortress-90229.herokuapp.com/)
+[The App](https://fathomless-cove-35496.herokuapp.com/users/sign_in)
 
 ## Getting Started
 
