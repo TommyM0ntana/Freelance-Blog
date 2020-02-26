@@ -1,4 +1,4 @@
-# Ruby on Rails Facebook-Clone Application
+# Ruby on Rails Freelance Blog Application
 
 > In this project we are building a Facebook-like social network application.
 
@@ -74,9 +74,7 @@ Additional description about the project and its features.
 - Twitter: [@tommymo13761893](https://twitter.com/tommymo13761893)
 - Linkedin: [Tommy Montana](https://www.linkedin.com/in/tommy-h-montana/)
 
-## Project specifications
 
-You can find project specifications [here](https://www.theodinproject.com/courses/ruby-on-rails/lessons/final-project)
 
 ## 🤝 Contributing
 
