@@ -30,9 +30,9 @@
 <br>
 <br>
 
-## Users Can Create Post
+## Users Create Post Page
 
-![screenshot](./app/assets/images/friends.png)
+![screenshot](./app/assets/images/create.png)
 
 
 <br>
