@@ -80,7 +80,6 @@ Additional description about the project and its features.
 
 Contributions, issues and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/ChristianOtieno/rails-facebook/issues).
 
 ## Show your support
 
