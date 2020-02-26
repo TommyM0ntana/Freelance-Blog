@@ -2,7 +2,7 @@
 
 > In this project we are building a Facebook-like social network application.
 
-![screenshot](./app/assets/images/facebookclone-pic.png)
+![screenshot](./app/assets/images/fb.png)
 
 Additional description about the project and its features.
 
