@@ -1,6 +1,6 @@
 # Ruby on Rails Freelance Blog Application
 
-> In this project we are building a Facebook-like social network application.
+> In this project we are building a Freelance Blog social network application.
 
 ## Users Community Page
 
