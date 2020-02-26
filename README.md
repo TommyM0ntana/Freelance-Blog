@@ -32,7 +32,7 @@
 
 ## Users Create Post Page
 
-![screenshot](./app/assets/images/create.png)
+![screenshot](./app/assets/images/create-post.png)
 
 
 <br>
