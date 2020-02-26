@@ -2,7 +2,25 @@
 
 > In this project we are building a Facebook-like social network application.
 
+## Users Community Page
+
 ![screenshot](./app/assets/images/fb.png)
+
+## Users Posts Page whit likes and comments
+
+![screenshot](./app/assets/images/post.png)
+
+
+## Users Friends
+
+![screenshot](./app/assets/images/friends.png)
+
+
+## Users Can Create Post
+
+![screenshot](./app/assets/images/friends.png)
+
+
 
 Additional description about the project and its features.
 
